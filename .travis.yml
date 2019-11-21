@@ -7,6 +7,10 @@ jobs:
   - os: linux
   - os: linux
     arch: s390x
+    addons:
+      apt:
+        packages:
+          - maven
 
 jdk:
   - openjdk8
