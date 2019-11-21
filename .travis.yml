@@ -7,10 +7,17 @@ matrix:
     - os: linux
       jdk:
         - openjdk8
+      addons:
+        hosts:
+          - kafka
+          - keycloak
+          - hydra
+    - os: linux
+      jdk:
         - openjdk11
     - os: linux
       arch: s390x
-      env: Java='8'  URL="https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u181-b13/OpenJDK8U-jdk_s390x_linux_hotspot_8u181b13.tar.gz"   
+      env: Java='8'  URL="https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u232-b09/OpenJDK8U-jdk_s390x_linux_hotspot_8u232b09.tar.gz"   
       addons:
         apt:
           packages:
