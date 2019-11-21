@@ -2,39 +2,23 @@ dist: xenial
 sudo: required
 language: java
 
-matrix:
+jobs:
   include:
-    - os: linux
-      jdk:
-        - openjdk8
-      addons:
-        hosts:
-          - kafka
-          - keycloak
-          - hydra
-    - os: linux
-      jdk:
-        - openjdk11
-    - os: linux
-      arch: s390x
-      env: Java='8'  URL="https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u232-b09/OpenJDK8U-jdk_s390x_linux_hotspot_8u232b09.tar.gz"   
-      addons:
-        apt:
-          packages:
-            - maven
-    - os: linux
-      arch: s390x
-      jdk:
-        - openjdk11
-      addons:
-        apt:
-          packages:
-            - maven
+  - os: linux
+  - os: linux
+    arch: s390x
 
+jdk:
+- openjdk8
+- openjdk11
 cache:
   directories:
   - "$HOME/.m2"
-
+addons:
+  hosts:
+    - kafka
+    - keycloak
+    - hydra
 env:
   global:
   - PULL_REQUEST=${TRAVIS_PULL_REQUEST}
