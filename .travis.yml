@@ -5,6 +5,7 @@ language: java
 os: linux
 arch: s390x
 
+
 jdk:
 - openjdk8
 - openjdk11
