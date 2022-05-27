@@ -47,7 +47,7 @@ if [ ${JAVA_MAJOR_VERSION} -eq 1 ] ; then
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/s390x-linux-gnu/jni
     git clone -b 1.18.2 https://github.com/arquillian/arquillian-cube.git
     cd arquillian-cube/
-    git apply ./testsuite/docker/hydra-import/arquillain.patch --ignore-whitespace
+    git apply ../testsuite/docker/hydra-import/arquillain.patch --ignore-whitespace
     mvn clean install -Dmaven.test.skip=true
     cd ../
     docker build --target hydra-import -t strimzi-oauth-testsuite/hydra-import:latest -f ./testsuite/docker/hydra-import/Dockerfile.s390x .
