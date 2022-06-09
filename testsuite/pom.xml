@@ -36,7 +36,7 @@
         <maven.surefire.version>2.22.1</maven.surefire.version>
         <version.arquillian_universe>1.5.0.0</version.arquillian_universe>
         <version.junit>4.12</version.junit>
-        <arquillian.cube.version>1.18.2</arquillian.cube.version>
+        <arquillian.cube.version>1.18.3-SNAPSHOT</arquillian.cube.version>
         <spotbugs.version>3.1.12</spotbugs.version>
         <strimzi-oauth.version>1.0.0-SNAPSHOT</strimzi-oauth.version>
         <checkstyle.dir>..</checkstyle.dir>
