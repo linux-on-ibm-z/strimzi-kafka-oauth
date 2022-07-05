@@ -40,13 +40,11 @@ if [ ${JAVA_MAJOR_VERSION} -eq 1 ] ; then
 
   arch=$(uname -m)
 
-  docker pull quay.io/keycloak/keycloak:15.0.0
-
   if [ "$arch" == 's390x' ]; then
     # Build s390x compatible hydra images
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/s390x-linux-gnu/jni
     docker build --target hydra-import -t strimzi-oauth-testsuite/hydra-import:latest -f ./testsuite/docker/hydra-import/Dockerfile.s390x .
-    git clone -b 15.0.0 https://github.com/keycloak/keycloak-containers.git
+    git clone -b 13.0.1 https://github.com/keycloak/keycloak-containers.git
     cd keycloak-containers/server/
     docker build -t quay.io/keycloak/keycloak:15.0.0 .
     cd ../../ && rm -rf keycloak-containers
@@ -60,6 +58,7 @@ if [ ${JAVA_MAJOR_VERSION} -eq 1 ] ; then
     exitIfError
     set -e
   else
+    docker pull quay.io/keycloak/keycloak:15.0.0
     docker pull oryd/hydra:v1.8.5
 
     mvn test-compile spotbugs:check -e -V -B -f testsuite
