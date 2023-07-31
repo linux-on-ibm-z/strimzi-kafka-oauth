@@ -1,4 +1,4 @@
-dist: bionic
+dist: focal
 sudo: required
 language: java
 jobs:
@@ -16,7 +16,6 @@ jobs:
       apt:
         packages:
         - maven 
-        - tzdata
   - os: linux
     arch: ppc64le
     jdk: openjdk11
