@@ -15,7 +15,9 @@ jobs:
         - mockoauth
       apt:
         packages:
-        - maven tzdata tzdata-java
+        - maven 
+        - tzdata
+        - tzdata-java
   - os: linux
     arch: ppc64le
     jdk: openjdk11
