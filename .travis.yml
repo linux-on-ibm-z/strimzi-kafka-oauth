@@ -44,7 +44,7 @@ addons:
   - hydra-jwt
   - mockoauth
 before_install:
-- sudo apt-get install -y tzdata tzdata-java
+- sudo apt-get update && sudo apt-get install -y tzdata
 env:
   global:
   - PULL_REQUEST=${TRAVIS_PULL_REQUEST}
