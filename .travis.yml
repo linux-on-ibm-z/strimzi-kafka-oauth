@@ -17,7 +17,6 @@ jobs:
         packages:
         - maven 
         - tzdata
-        - tzdata-java
   - os: linux
     arch: ppc64le
     jdk: openjdk11
