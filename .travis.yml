@@ -1,11 +1,11 @@
-dist: focal
+dist: bionic
 sudo: required
 language: java
 jobs:
   include:
   - os: linux
     arch: s390x
-    jdk: openjdk8
+    jdk: openjdk11
     addons:
       hosts:
         - kafka
