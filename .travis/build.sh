@@ -48,8 +48,8 @@ if [ "$arch" == 's390x' ]; then
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/s390x-linux-gnu/jni
     docker build --target hydra-import -t strimzi-oauth-testsuite/hydra-import:latest -f ./testsuite/docker/hydra-import/Dockerfile.s390x .
     git clone https://github.com/keycloak/keycloak.git
-    git checkout 21.0.0
     cd keycloak/quarkus
+    git checkout 21.0.0
     ../mvnw -f ../pom.xml clean install -DskipTestsuite -DskipExamples -DskipTests
     ../mvnw clean install -DskipTests
     cp dist/target/keycloak-21.0.0.tar.gz container/
