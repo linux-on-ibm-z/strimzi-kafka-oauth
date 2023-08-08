@@ -50,8 +50,8 @@ if [ "$arch" == 's390x' ]; then
     git clone https://github.com/keycloak/keycloak.git
     cd keycloak/quarkus
     git checkout 21.0.0
-    ../mvnw -f ../pom.xml clean install -DskipTestsuite -DskipExamples -DskipTests
-    ../mvnw clean install -DskipTests
+    ../mvnw -f ../pom.xml clean install -DskipTestsuite -DskipExamples -DskipTests -q
+    ../mvnw clean install -DskipTests -q
     cp dist/target/keycloak-21.0.0.tar.gz container/
     docker buildx build --platform=linux/s390x --build-arg KEYCLOAK_DIST=keycloak-21.0.0.tar.gz . -t quay.io/keycloak/keycloak:21.0.0
     docker build -t quay.io/keycloak/keycloak:21.0.0-legacy .
