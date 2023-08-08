@@ -50,18 +50,18 @@ if [ "$arch" == 's390x' ]; then
     git clone https://github.com/keycloak/keycloak.git
     cd keycloak/quarkus
     git checkout 21.0.0
-    ../mvnw -f ../pom.xml clean install -DskipTestsuite -DskipExamples -DskipTests
-    ../mvnw clean install -DskipTests
+    ../mvnw -f ../pom.xml clean install -DskipTestsuite -DskipExamples -DskipTests --quite
+    ../mvnw clean install -DskipTests --quite
     cp dist/target/keycloak-21.0.0.tar.gz container/
     cd container
-    docker buildx build --platform=linux/s390x --build-arg KEYCLOAK_DIST=keycloak-21.0.0.tar.gz . -t quay.io/keycloak/keycloak:21.0.0
-    docker build -t quay.io/keycloak/keycloak:21.0.0-legacy .
+    docker buildx build --platform=linux/s390x --build-arg KEYCLOAK_DIST=keycloak-21.0.0.tar.gz . -t quay.io/keycloak/keycloak:21.0.0 --quite
+    docker build -t quay.io/keycloak/keycloak:21.0.0-legacy . --quite
     cd ../../.. && rm -rf keycloak
     docker build --target oryd-hydra -t oryd/hydra:v1.8.5 -f ./testsuite/docker/hydra-import/Dockerfile.s390x .
-    mvn test-compile spotbugs:check -e -V -B -f testsuite
+    mvn test-compile spotbugs:check -e -V -B -f testsuite --quite
     set +e
     clearDockerEnv
-    mvn -e -V -B clean install -f testsuite -Pcustom -Dkafka.docker.image=quay.io/strimzi/kafka:0.33.2-kafka-3.4.0
+    mvn -e -V -B clean install -f testsuite -Pcustom -Dkafka.docker.image=quay.io/strimzi/kafka:0.33.2-kafka-3.4.0 --quite
     EXIT=$?
     exitIfError
     set -e
