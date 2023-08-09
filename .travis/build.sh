@@ -54,14 +54,14 @@ if [ "$arch" == 's390x' ]; then
     ../mvnw clean install -DskipTests > logs2.txt
     cp dist/target/keycloak-21.0.0.tar.gz container/
     cd container
-    docker buildx build --platform=linux/s390x --build-arg KEYCLOAK_DIST=keycloak-21.0.0.tar.gz . -t quay.io/keycloak/keycloak:21.0.0 > logs3.txt
-    docker build -t quay.io/keycloak/keycloak:21.0.0-legacy . > logs4.txt
+    docker buildx build --platform=linux/s390x --build-arg KEYCLOAK_DIST=keycloak-21.0.0.tar.gz . -t quay.io/keycloak/keycloak:21.0.0 
+    docker build -t quay.io/keycloak/keycloak:21.0.0-legacy . 
     cd ../../.. && rm -rf keycloak
     docker build --target oryd-hydra -t oryd/hydra:v1.8.5 -f ./testsuite/docker/hydra-import/Dockerfile.s390x .
-    mvn test-compile spotbugs:check -e -V -B -f testsuite > logs5.txt
+    mvn test-compile spotbugs:check -e -V -B -f testsuite 
     set +e
     clearDockerEnv
-    mvn -e -V -B clean install -f testsuite -Pcustom -Dkafka.docker.image=quay.io/strimzi/kafka:0.33.2-kafka-3.4.0 > logs6.txt
+    mvn -e -V -B clean install -f testsuite -Pcustom -Dkafka.docker.image=quay.io/strimzi/kafka:0.33.2-kafka-3.4.0 
     EXIT=$?
     exitIfError
     set -e
